@@ -78,42 +78,74 @@ int main()
     cout << "Введите размер массива: " ;
     cin >> ns;
     int k=0;
-    for(int i=0;i<ns.length();i++){
-        if(ns[i]>'9' || ns[i]<'1')
+    if(ns[0]>'9' || ns[0]<'1')
+        k=1;
+    for(int i=1; i<ns.length(); i++)
+    {
+        if(ns[i]>'9' || ns[i]<'0')
             k=1;
     }
     int n=0;
-    for(int i=0;i<ns.length();i++){
+    for(int i=0; i<ns.length(); i++)
+    {
         n*=10;
         n+=(ns[i]-'0');
     }
-    if(k==0){
-    int *a = new int [n];
-    int *c = new int [10000];
-    cout << "Введите  массив: " << endl ;
-    for (int i = 0; i < n; i++)
+    if(k==0)
     {
-        cin >> a[i];
+        int *a = new int [n];
+        int *c = new int [10000];
+        cout << "Введите  массив: " << endl ;
+        string ch;
+        for (int i = 0; i < n && k==0; i++)
+        {
+            cin>>ch;
+            for(int m=0; m<ch.length(); m++)
+            {
+                if(ch[m]<='9' && ch[m]>='0' || ch[m]=='-')
+                {
+                }
+                else{k=1;}
+            }
+            if(k==0)
+            {
+                a[i]=0;
+                for(int j=0; j<ch.length(); j++)
+                {
+                    a[i]*=10;
+                    a[i]+=(ch[j]-'0');
+                }
+
+            }
+            else
+            {
+                cout<<"ИЗВИНИТЕ Я СКАНДАЛ ТАКОЙ УЧИНЮ";
+            }
+
+        }
+        cout << endl;
+        int ye;
+        if(k==0)
+        {
+            cout<<"1 - Сортировка подсчетом"<<endl<<"2 - Быстрая сортировка"<<endl<<"Ваш выбор: ";
+            cin>>ye;
+            if(ye==1)
+            {
+                CountingSort(a, c, n);    // в функцию нужно передать введенный массив a[], массив счета чисел c[], размер массива n
+            }
+            else if(ye==2)
+            {
+                quickSort(a, 0, n-1);     // в функцию нужно передать введенный массив a[], два флажка 0 и n-1
+            }
+            for (int i = 0; i < n; i++)
+            {
+                cout << a[i] << "\t";
+            }
+            cout << endl;
+        }
     }
-    cout << endl;
-    int ye;
-    cout<<"1 - Сортировка подсчетом"<<endl<<"2 - Быстрая сортировка"<<endl<<"Ваш выбор: ";
-    cin>>ye;
-    if(ye==1)
+    if(k)
     {
-        CountingSort(a, c, n);    // в функцию нужно передать введенный массив a[], массив счета чисел c[], размер массива n
-    }
-    else if(ye==2)
-    {
-        quickSort(a, 0, n-1);     // в функцию нужно передать введенный массив a[], два флажка 0 и n-1
-    }
-    for (int i = 0; i < n; i++)
-    {
-        cout << a[i] << "\t";
-    }
-    cout << endl;
-    }
-    if(k){
 
         cout<<"введено неверное значение";
     }
