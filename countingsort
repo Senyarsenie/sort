@@ -99,9 +99,12 @@ int main()
         string ch;
         for (int i = 0; i < n && k==0; i++)
         {
+             int otr=0;
             cin>>ch;
             for(int m=0; m<ch.length(); m++)
             {
+
+                if(ch[0]=='-'){otr=1;}
                 if(ch[m]<='9' && ch[m]>='0' || ch[m]=='-')
                 {
                 }
@@ -110,13 +113,21 @@ int main()
             if(k==0)
             {
                 a[i]=0;
+                if(otr == 0){
                 for(int j=0; j<ch.length(); j++)
                 {
                     a[i]*=10;
                     a[i]+=(ch[j]-'0');
                 }
-
-            }
+                }
+                else{
+                    for(int j=1; j<ch.length(); j++)
+                {
+                    a[i]*=10;
+                    a[i]-=(ch[j]-'0');
+                }
+                }
+                }
             else
             {
                 cout<<"ИЗВИНИТЕ Я СКАНДАЛ ТАКОЙ УЧИНЮ";
