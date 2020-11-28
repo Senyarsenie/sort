@@ -74,9 +74,20 @@ void quickSort(int *a, int l, int r)
 int main()
 {
     setlocale(LC_ALL,"Rus");
-    int n;
+    string ns;
     cout << "Введите размер массива: " ;
-    cin >> n;
+    cin >> ns;
+    int k=0;
+    for(int i=0;i<ns.length();i++){
+        if(ns[i]>'9' || ns[i]<'1')
+            k=1;
+    }
+    int n=0;
+    for(int i=0;i<ns.length();i++){
+        n*=10;
+        n+=(ns[i]-'0');
+    }
+    if(k==0){
     int *a = new int [n];
     int *c = new int [10000];
     cout << "Введите  массив: " << endl ;
@@ -101,5 +112,10 @@ int main()
         cout << a[i] << "\t";
     }
     cout << endl;
+    }
+    if(k){
+
+        cout<<"введено неверное значение";
+    }
     return 0;
 }
