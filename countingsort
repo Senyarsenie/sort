@@ -151,9 +151,11 @@ int main()
             else{
                 cout<<"неверное значение";
             }
+            if(ye == 1 || ye == 2){
             for (int i = 0; i < n; i++)
             {
                 cout << a[i] << "\t";
+            }
             }
             cout << endl;
         }
