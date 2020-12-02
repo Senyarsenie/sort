@@ -73,7 +73,11 @@ void quickSort(int *a, int l, int r)
 }
 int main()
 {
-    setlocale(LC_ALL,"Rus");
+     setlocale(LC_ALL,"Rus");
+      int ye;
+    cout<<"1 - Сортировка подсчетом"<<endl<<"2 - Быстрая сортировка"<<endl<<"Ваш выбор: ";
+            cin>>ye;
+
     string ns;
     cout << "Введите размер массива: " ;
     cin >> ns;
@@ -130,16 +134,15 @@ int main()
                 }
             else
             {
-                cout<<"ИЗВИНИТЕ Я СКАНДАЛ ТАКОЙ УЧИНЮ";
+                cout<<"Введено неверное значение";
             }
 
         }
         cout << endl;
-        int ye;
+
         if(k==0)
         {
-            cout<<"1 - Сортировка подсчетом"<<endl<<"2 - Быстрая сортировка"<<endl<<"Ваш выбор: ";
-            cin>>ye;
+
             if(ye==1)
             {
                 CountingSort(a, c, n);    // в функцию нужно передать введенный массив a[], массив счета чисел c[], размер массива n
